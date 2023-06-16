@@ -122,4 +122,20 @@ class Account extends KuCoinFuturesApi
         $response = $this->call(Request::METHOD_POST, '/api/v2/transfer-out', compact('bizNo', 'amount', 'currency'));
         return $response->getApiData();
     }
+    
+    /**
+     * kuCoin futures transfer to KuCoin account (v3).
+     *
+     * @param  number amount
+     * @param  string currency
+     * @return array
+     * @throws \KuCoin\Futures\SDK\Exceptions\BusinessException
+     * @throws \KuCoin\Futures\SDK\Exceptions\HttpException
+     * @throws \KuCoin\Futures\SDK\Exceptions\InvalidApiUriException
+     */
+    public function transferOutV3($amount, $currency, $recAccountType)
+    {
+        $response = $this->call(Request::METHOD_POST, '/api/v3/transfer-out', compact('amount', 'currency', 'recAccountType'));
+        return $response->getApiData();
+    }
 }
